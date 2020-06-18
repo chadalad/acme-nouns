@@ -1,14 +1,18 @@
-const { Router } = require('express');
+const express = require('express');
+const chalk = require('chalk');
 
-const apiRouter = Router();
+const app = express();
 
-// An example route that the client requests to check if the app is healthy.
-apiRouter.get('/health', (req, res) => {
-  res.send({
-    message: 'Application is awake and healthy',
+const PORT = process.env.PORT || 3000;
+
+const startServer = () => new Promise((res) => {
+  app.listen(PORT, () => {
+    console.log(chalk.green(`Server is now listening on PORT:${PORT}`));
+    res();
   });
 });
 
-// TODO: Does your api want more routes? Why not here?
-
-module.exports = apiRouter;
+module.exports = {
+  app,
+  startServer,
+};
