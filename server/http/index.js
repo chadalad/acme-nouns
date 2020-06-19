@@ -6,6 +6,7 @@ const path = require ('path');
 const fs = require('fs');
 const { composeMiddleware, standardMiddleware } = require('./middleware');
 
+
 app.use(express.json());
 
 // Hooks in all of our standard middleware.
